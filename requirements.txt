@@ -1,0 +1,9 @@
+Django>=5.2.13,<5.3
+psycopg[binary]>=3.2,<4
+cryptography>=46,<47
+argon2-cffi>=25,<26
+pyotp>=2.9,<3
+gunicorn>=23,<24
+requests>=2.32,<3
+whitenoise>=6.9,<7
+qrcode[pil]>=8,<9

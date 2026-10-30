@@ -1,0 +1,2 @@
+# Interfaz operativa
+Aplicación de citas en español: fondo marfil, tinta verde oscuro, acento pino, tablas legibles y navegación horizontal. Tipografía del sistema para funcionamiento sin red. Cabecera con nombre, ámbito y salida; búsqueda y filtros sobre agenda en filas; paneles de gestión según rol. Formularios con etiquetas visibles, foco perceptible, errores específicos, botones con verbo y resultados persistentes. Móvil: navegación envuelve, formularios en una columna y tablas con desplazamiento. No imágenes decorativas ni peticiones externas.

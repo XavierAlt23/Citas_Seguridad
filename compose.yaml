@@ -1,0 +1,32 @@
+name: consulta-clara
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: consultas
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_owner_password
+      POSTGRES_INITDB_ARGS: --auth-host=scram-sha-256
+    secrets:
+      - db_owner_password
+    ports:
+      - "127.0.0.1:${DB_PORT:-55432}:5432"
+    volumes:
+      - reservations:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U postgres -d consultas"]
+      interval: 3s
+      timeout: 3s
+      retries: 25
+    shm_size: 128mb
+    mem_limit: 768m
+    cpus: 2
+    security_opt:
+      - no-new-privileges:true
+    command: ["postgres", "-c", "max_connections=150", "-c", "shared_buffers=128MB", "-c", "log_statement=none", "-c", "log_min_error_statement=panic"]
+volumes:
+  reservations:
+secrets:
+  db_owner_password:
+    file: .local/db-owner-password
